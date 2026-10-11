@@ -20,7 +20,7 @@ load_dotenv(BASE_DIR / ".env")
 
 DEBUG = os.getenv(
     "DJANGO_DEBUG", "False"
-).lower() == "true"
+).strip().lower() == "true"
 
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 
@@ -73,7 +73,7 @@ SECRET_KEY = 'django-insecure-t1=eixc%y*ud5b=(8^j75f5%gohsm@by+qo&_5kesoc!#geuvv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [chatapp-fullstack-6bx3.onrender.com]
 
 
 # Application definition
@@ -219,11 +219,8 @@ REST_FRAMEWORK = {
 }
 
 CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
     "https://chatapp-fullstack-6bx3.onrender.com",
 ]
-CSRF_TRUSTED_ORIGINS = []
 
 if DEBUG:
     CSRF_TRUSTED_ORIGINS += [
@@ -262,3 +259,7 @@ SECURE_SSL_REDIRECT = not DEBUG
 
 SESSION_COOKIE_HTTPONLY = True
 CSRF_COOKIE_HTTPONLY = False
+
+STATICFILES_DIRS = [
+    BASE_DIR / "frontend_dist",
+]
