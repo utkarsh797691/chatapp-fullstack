@@ -9,6 +9,25 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
+
+import os
+from pathlib import Path
+from dotenv import load_dotenv
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+load_dotenv(BASE_DIR / ".env")
+
+DEBUG = os.getenv(
+    "DJANGO_DEBUG", "True"
+).lower() == "true"
+
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
+
+if not SECRET_KEY:
+    if not DEBUG:
+        raise RuntimeError("DJANGO_SECRET_KEY is required")
+    SECRET_KEY = "development-only-unsafe-key"
 import dj_database_url
 DEBUG = os.getenv(
     "DJANGO_DEBUG", "True"
