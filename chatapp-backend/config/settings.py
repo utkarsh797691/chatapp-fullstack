@@ -19,7 +19,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / ".env")
 
 DEBUG = os.getenv(
-    "DJANGO_DEBUG", "True"
+    "DJANGO_DEBUG", "False"
 ).lower() == "true"
 
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
@@ -43,6 +43,7 @@ if not SECRET_KEY:
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
+    "chatapp-fullstack-6bx3.onrender.com",
 ]
 
 # Render provides its public hostname
@@ -220,6 +221,7 @@ REST_FRAMEWORK = {
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
+    "https://chatapp-fullstack-6bx3.onrender.com",
 ]
 CSRF_TRUSTED_ORIGINS = []
 
