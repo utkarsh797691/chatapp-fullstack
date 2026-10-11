@@ -105,7 +105,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "frontend_dist"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -260,6 +260,3 @@ SECURE_SSL_REDIRECT = not DEBUG
 SESSION_COOKIE_HTTPONLY = True
 CSRF_COOKIE_HTTPONLY = False
 
-STATICFILES_DIRS = [
-    BASE_DIR / "frontend_dist",
-]
